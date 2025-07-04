@@ -14,10 +14,11 @@
     <button mat-raised-button color="primary" (click)="addTask()">
       <mat-icon>add</mat-icon> Добавить задачу
     </button>
-
-    <button mat-raised-button color="warn" (click)="clearAll()" *ngIf="tasks().length > 0">
-      <mat-icon>delete_forever</mat-icon> Очистить всё
-    </button>
+    @if (tasks().length > 0) {
+      <button mat-raised-button color="warn" (click)="clearAll()">
+        <mat-icon>delete_forever</mat-icon> Очистить всё
+      </button>
+    }
   </div>
 
   <div class="tasks-container">
@@ -46,10 +47,11 @@
         </button>
       </mat-card-actions>
     </mat-card>
-
-    <div *ngIf="tasks().length === 0" class="empty-state">
+  @if (tasks().length === 0) {
+    <div class="empty-state">
       <mat-icon>assignment</mat-icon>
       <p>Задачи не найдены</p>
     </div>
+  }
   </div>
 </div>

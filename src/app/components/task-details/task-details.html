@@ -1,4 +1,5 @@
-<div *ngIf="task" class="task-details">
+@if(task) {
+<div class="task-details">
   <mat-card>
     <mat-card-header>
       <mat-card-title>
@@ -28,3 +29,4 @@
     </mat-card-actions>
   </mat-card>
 </div>
+}
