@@ -40,7 +40,7 @@ export class TaskForm {
         description: this.form.value.description || undefined,
         completed: this.form.value.completed || false
       });
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     }
   }
 
