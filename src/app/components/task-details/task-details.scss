@@ -1,0 +1,27 @@
+.task-details {
+  max-width: 600px;
+  margin: 0 auto;
+
+  mat-card {
+    padding: 24px;
+
+    mat-card-content {
+      margin-top: 16px;
+
+      .detail-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        gap: 8px;
+
+        mat-icon {
+          color: rgba(0, 0, 0, 0.54);
+        }
+      }
+    }
+
+    mat-card-actions {
+      margin-top: 16px;
+    }
+  }
+}

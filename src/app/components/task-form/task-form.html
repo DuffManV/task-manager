@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Новая задача</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput formControlName="title" required placeholder="Название">
+      <mat-error *ngIf="form.get('title')?.hasError('required')">
+        Название обязательно
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Описание</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="completed">Выполнена</mat-checkbox>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Отмена</button>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="!form.valid">
+    Сохранить
+  </button>
+</mat-dialog-actions>

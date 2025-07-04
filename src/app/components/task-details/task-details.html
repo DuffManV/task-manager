@@ -1,0 +1,30 @@
+<div *ngIf="task" class="task-details">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{ task.title }}</h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Статус: {{ task.completed ? 'Выполнена' : 'Не выполнена' }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="detail-row">
+        <mat-icon>description</mat-icon>
+        <p>{{ task.description || 'Нет описания' }}</p>
+      </div>
+
+      <div class="detail-row">
+        <mat-icon>event</mat-icon>
+        <p>Создано: {{ task.createdAt | date:'fullDate' }}</p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon> Назад
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
