@@ -6,20 +6,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, MatToolbarModule],
-  template: `
-    <mat-toolbar color="primary">
-      <span>Менеджер задач</span>
-    </mat-toolbar>
-    <main class="container">
-      <router-outlet></router-outlet>
-    </main>
-  `,
+  templateUrl: './app.html',
   styles: [`
-    .container {
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+
   `]
 })
 export class App {}
