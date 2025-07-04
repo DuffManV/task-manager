@@ -11,10 +11,6 @@ export class TaskService {
   constructor() {
     this.loadFromStorage();
     this.setupAutoSave();
-
-    if (this.tasks().length === 0) {
-      this.initSampleData();
-    }
   }
 
   private loadFromStorage() {
@@ -33,18 +29,6 @@ export class TaskService {
         lastId: this.lastId()
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    });
-  }
-
-  private initSampleData() {
-    this.addTask({
-      title: 'Изучить Angular',
-      description: 'Освоить основы фреймворка',
-      completed: false
-    });
-    this.addTask({
-      title: 'Создать приложение',
-      completed: true
     });
   }
 
