@@ -72,4 +72,13 @@ export class TaskList {
       this.snackBar.open('Все задачи удалены', 'Закрыть', { duration: 3000 });
     }
   }
+
+  onSearchChange() {
+    this.tasks = computed(() => {
+      if (!this.searchTerm.trim()) {
+        return this.taskService.getTasks();
+      }
+      return this.taskService.searchTasks(this.searchTerm);
+    });
+  }
 }
