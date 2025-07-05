@@ -1,4 +1,4 @@
-import { Component, inject, computed } from '@angular/core';
+import {Component, inject, computed, signal} from '@angular/core';
 import { TaskService } from '../../services/task';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -34,11 +34,12 @@ export class TaskList {
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
 
-  searchTerm = '';
+  searchTerm = signal('');
   tasks = computed(() => {
     const allTasks = this.taskService.getTasks();
-    if (!this.searchTerm.trim()) return allTasks;
-    return this.taskService.searchTasks(this.searchTerm);
+    const term = this.searchTerm();
+    if (!term.trim()) return allTasks;
+    return this.taskService.searchTasks(term);
   });
 
   addTask() {
@@ -73,12 +74,7 @@ export class TaskList {
     }
   }
 
-  onSearchChange() {
-    this.tasks = computed(() => {
-      if (!this.searchTerm.trim()) {
-        return this.taskService.getTasks();
-      }
-      return this.taskService.searchTasks(this.searchTerm);
-    });
+  onSearchChange(term: string) {
+    this.searchTerm.set(term);
   }
 }
