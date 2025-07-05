@@ -36,9 +36,8 @@ export class TaskList {
 
   searchTerm = signal('');
   tasks = computed(() => {
-    const allTasks = this.taskService.getTasks();
     const term = this.searchTerm();
-    if (!term.trim()) return allTasks;
+    if (!term.trim()) return this.taskService.getTasks();
     return this.taskService.searchTasks(term);
   });
 
