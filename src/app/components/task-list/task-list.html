@@ -22,7 +22,8 @@
   </div>
 
   <div class="tasks-container">
-    <mat-card *ngFor="let task of tasks()" class="task-card">
+    @for(task of tasks(); track $index) {
+    <mat-card class="task-card">
       <mat-card-header>
         <mat-card-title>
           <mat-checkbox [checked]="task.completed" (change)="toggleComplete(task.id, !task.completed)">
@@ -47,6 +48,7 @@
         </button>
       </mat-card-actions>
     </mat-card>
+    }
   @if (tasks().length === 0) {
     <div class="empty-state">
       <mat-icon>assignment</mat-icon>
